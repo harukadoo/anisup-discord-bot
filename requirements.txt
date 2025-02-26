@@ -1,0 +1,8 @@
+discord.py
+python-dotenv
+aiohttp
+requests
+mistralai
+
+
+#pip install -r requirements.txt
