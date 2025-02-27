@@ -1,8 +1,8 @@
-#--------------Допоміжні функції та дескриптори-------------
+#--------------Auxiliary functions and descriptors-------------
 
 import discord
 
-class NonEmptyString: #des
+class NonEmptyString:
     def __init__(self, name):
         self.name = name
 
@@ -20,6 +20,7 @@ def log_command(func):
         print(f"Command {func.__name__} called by user {interaction.user}")
         return await func(interaction, *args, **kwargs)
     return wrapper
+
 
 registered_commands = {}
 

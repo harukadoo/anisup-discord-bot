@@ -1,4 +1,4 @@
-#-------Основний файл запуску бота---------
+#-------The main bot startup file---------
 
 import discord
 from discord.ext import commands

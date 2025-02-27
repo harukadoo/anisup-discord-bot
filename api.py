@@ -1,4 +1,4 @@
-#--------------Запити до API MyAnimeList-------------
+#--------------API Requests-------------
 
 import aiohttp
 import os
@@ -39,9 +39,6 @@ def find_anime_by_description(description: str) -> str:
         raise Exception(f"Error in find_anime_by_description: {e}")
 
 def recommend_anime_by_preferences(preferences: str) -> str:
-    """
-    Recommend an anime based on user preferences using Mistral AI.
-    """
     try:
         chat_response = client.chat.complete(
             model=model,

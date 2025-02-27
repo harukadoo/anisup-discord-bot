@@ -1,4 +1,4 @@
-#--------------Команди, пов'язані з аніме---------------
+#--------------Commands related to anime---------------
 
 import discord
 from discord import app_commands
@@ -7,7 +7,7 @@ from api import get_popular_anime, get_airing_anime, get_anime_by_season, find_a
 import datetime
 import asyncio
 from models.anime import Anime
-from utils import register_command, log_command, NonEmptyString
+from utils import NonEmptyString
 
 FIRST_ANIME_YEAR = 1917
 CURRENT_YEAR = datetime.datetime.now().year
@@ -64,8 +64,6 @@ class AnimeCog(commands.Cog):
         await interaction.followup.send(embed=embed, view=view)
 
 
-    # @register_command("top-anime")
-    # @log_command
     @app_commands.command(name="top-anime", description="Show the top 10 popular anime")
     async def top_anime(self, interaction: discord.Interaction):
         await interaction.response.defer()
@@ -85,8 +83,6 @@ class AnimeCog(commands.Cog):
             await interaction.followup.send(f"❌ Error: {e}")
 
 
-    # @register_command("airing-anime")
-    # @log_command
     @app_commands.command(name="airing-anime", description="Show the top 10 currently airing anime")
     async def airing_anime(self, interaction: discord.Interaction):
         await interaction.response.defer()
@@ -95,8 +91,6 @@ class AnimeCog(commands.Cog):
         await self.send_anime_list(interaction, anime_list, "📺 **Top 10 Airing Anime**")
 
 
-    # @register_command("seasonal-anime")
-    # @log_command
     @app_commands.command(name="seasonal-anime", description="Show anime of a certain season")
     async def seasonal_anime(self, interaction: discord.Interaction, year: int, season: str):
         await interaction.response.defer()
@@ -114,8 +108,6 @@ class AnimeCog(commands.Cog):
         await self.send_anime_list(interaction, anime_list, f"📅 **Anime from {season.capitalize()} {year}**")
 
 
-    # @register_command("more")
-    # @log_command
     @app_commands.command(name="more", description="Show 10 more anime")
     async def more(self, interaction: discord.Interaction):
         await interaction.response.defer()
@@ -136,8 +128,6 @@ class AnimeCog(commands.Cog):
         await self.send_anime_list(interaction, anime_list, "📜 **Continued list**", start_index)
 
 
-    # @register_command("find-anime")
-    # @log_command
     @app_commands.command(name="find-anime", description="Find an anime by description")
     async def find_anime(self, interaction: discord.Interaction, description: str):
         await interaction.response.defer()
@@ -158,8 +148,6 @@ class AnimeCog(commands.Cog):
             await interaction.followup.send(f"❌ Error: {e}")
 
 
-    # @register_command("recommend")
-    # @log_command
     @app_commands.command(name="recommend", description="Recommend an anime based on your preferences")
     async def recommend_anime(self, interaction: discord.Interaction, preferences: str):
         await interaction.response.defer()
