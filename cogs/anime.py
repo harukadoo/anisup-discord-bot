@@ -6,7 +6,8 @@ from discord.ext import commands
 from api import get_popular_anime, get_airing_anime, get_anime_by_season, find_anime_by_description, recommend_anime_by_preferences
 import datetime
 import asyncio
-from models.anime import Anime 
+from models.anime import Anime
+from utils import register_command, log_command, NonEmptyString
 
 FIRST_ANIME_YEAR = 1917
 CURRENT_YEAR = datetime.datetime.now().year
@@ -26,6 +27,8 @@ class AnimeCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.user_data = {}
+        self.description_validator = NonEmptyString("description") 
+        self.preferences_validator = NonEmptyString("preferences") 
 
     async def send_anime_list(self, interaction: discord.Interaction, anime_list, title, start_index=0):
         if not anime_list:
@@ -60,6 +63,9 @@ class AnimeCog(commands.Cog):
 
         await interaction.followup.send(embed=embed, view=view)
 
+
+    # @register_command("top-anime")
+    # @log_command
     @app_commands.command(name="top-anime", description="Show the top 10 popular anime")
     async def top_anime(self, interaction: discord.Interaction):
         await interaction.response.defer()
@@ -79,6 +85,8 @@ class AnimeCog(commands.Cog):
             await interaction.followup.send(f"❌ Error: {e}")
 
 
+    # @register_command("airing-anime")
+    # @log_command
     @app_commands.command(name="airing-anime", description="Show the top 10 currently airing anime")
     async def airing_anime(self, interaction: discord.Interaction):
         await interaction.response.defer()
@@ -87,6 +95,8 @@ class AnimeCog(commands.Cog):
         await self.send_anime_list(interaction, anime_list, "📺 **Top 10 Airing Anime**")
 
 
+    # @register_command("seasonal-anime")
+    # @log_command
     @app_commands.command(name="seasonal-anime", description="Show anime of a certain season")
     async def seasonal_anime(self, interaction: discord.Interaction, year: int, season: str):
         await interaction.response.defer()
@@ -104,6 +114,8 @@ class AnimeCog(commands.Cog):
         await self.send_anime_list(interaction, anime_list, f"📅 **Anime from {season.capitalize()} {year}**")
 
 
+    # @register_command("more")
+    # @log_command
     @app_commands.command(name="more", description="Show 10 more anime")
     async def more(self, interaction: discord.Interaction):
         await interaction.response.defer()
@@ -124,10 +136,14 @@ class AnimeCog(commands.Cog):
         await self.send_anime_list(interaction, anime_list, "📜 **Continued list**", start_index)
 
 
+    # @register_command("find-anime")
+    # @log_command
     @app_commands.command(name="find-anime", description="Find an anime by description")
     async def find_anime(self, interaction: discord.Interaction, description: str):
         await interaction.response.defer()
         try:
+            self.description_validator.__set__(self, description)
+
             anime_name = find_anime_by_description(description)
             embed = discord.Embed(
                 title="🔍 **Found Anime**",
@@ -136,13 +152,20 @@ class AnimeCog(commands.Cog):
             )
             await interaction.followup.send(embed=embed)
 
+        except ValueError as e:
+            await interaction.followup.send(f"❌ Error: {e}")
         except Exception as e:
             await interaction.followup.send(f"❌ Error: {e}")
 
+
+    # @register_command("recommend")
+    # @log_command
     @app_commands.command(name="recommend", description="Recommend an anime based on your preferences")
     async def recommend_anime(self, interaction: discord.Interaction, preferences: str):
         await interaction.response.defer()
         try:
+            self.preferences_validator.__set__(self, preferences)
+
             recommendation = recommend_anime_by_preferences(preferences)
             embed = discord.Embed(
                 title="🎌 **Recommended Anime**",
@@ -151,6 +174,8 @@ class AnimeCog(commands.Cog):
             )
             await interaction.followup.send(embed=embed)
 
+        except ValueError as e:
+            await interaction.followup.send(f"❌ Error: {e}")
         except Exception as e:
             await interaction.followup.send(f"❌ Error: {e}")
 

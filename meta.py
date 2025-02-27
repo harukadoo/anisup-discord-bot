@@ -1,9 +1,9 @@
 #------------Метакласи для розширення функціоналу------------
 
-# class MetaCommandRegistry(type):
-#     def __new__(cls, name, bases, dct):
-#         new_cls = super().__new__(cls, name, bases, dct)
+# registered_commands = {}
 
-#         if hasattr(new_cls, "command_name"):
-#             registered_commands[new_cls.command_name] = new_cls
-#         return new_cls
+# def register_command(name):
+#     def decorator(func):
+#         registered_commands[name] = func
+#         return func
+#     return decorator

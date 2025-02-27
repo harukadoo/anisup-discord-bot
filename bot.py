@@ -15,9 +15,15 @@ class AnimeBot(commands.Bot):
         super().__init__(command_prefix="!", intents=intents)
 
     async def setup_hook(self):
-        await self.load_extension("cogs.anime")
-        await self.load_extension("cogs.general")
-        await self.tree.sync()
+        try:
+            await self.load_extension("cogs.anime")
+            await self.load_extension("cogs.general")
+            print("Cogs loaded successfully.")
+        except Exception as e:
+            print(f"Failed to load cogs: {e}")
+
+        synced = await self.tree.sync()
+        print(f"Synced {len(synced)} commands: {[cmd.name for cmd in synced]}")
 
     async def on_ready(self):
         print(f"Bot {self.user} is online and ready!")

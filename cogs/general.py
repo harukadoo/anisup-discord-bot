@@ -3,15 +3,20 @@
 import discord
 from discord import app_commands
 from discord.ext import commands
+from utils import register_command, log_command
 
 class GeneralCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    # @register_command("start")
+    # @log_command
     @app_commands.command(name="start", description="Start the bot and get an introduction message.")
     async def start(self, interaction: discord.Interaction):
         await interaction.response.send_message("👋 Hello! I am your AnimeBot. Use /top-anime to see the top anime, or /airing-anime to view currently airing anime!")
 
+    # @register_command("help")
+    # @log_command
     @app_commands.command(name="help", description="Get a list of available commands.")
     async def help(self, interaction: discord.Interaction):
         help_message = (
