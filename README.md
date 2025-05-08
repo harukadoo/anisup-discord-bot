@@ -1,105 +1,117 @@
-# Dokumentacja dla Discord Bota o Anime
-## Opis projektu
-### 1. Cel projektu
-Celem projektu jest stworzenie bota na Discord, który zapewnia użytkownikom wygodny dostęp do informacji o anime. Bot umożliwia:
+# Documentation for Discord Anime Bot
+## Project Description
+### 1. Project Goal
+The goal of the project is to create a Discord bot that provides users with convenient access to anime information. The bot allows:
 
-- Otrzymywanie list popularnych i aktualnie emitowanych anime.
+- Receiving lists of popular and currently airing anime.
 
-- Wyszukiwanie anime według sezonu i roku.
+- Searching for anime by season and year.
 
-- Znajdowanie tytułu anime na podstawie opisu.
+- Finding the title of an anime based on its description.
 
-- Otrzymywanie spersonalizowanych rekomendacji na podstawie preferencji użytkownika.
+- Getting personalized recommendations based on user preferences.
 
-### 2. Zadania projektu
-- Integracja z API MyAnimeList w celu uzyskania aktualnych danych o anime.
+### 2. Project Tasks
+- Integration with the MyAnimeList API to obtain up-to-date anime data.
 
-- Wykorzystanie Mistral AI do przetwarzania zapytań tekstowych (wyszukiwanie na podstawie opisu i rekomendacje).
+- Using Mistral AI to process text queries (description-based search and recommendations).
 
-- Implementacja interaktywnego interfejsu w Discord z wykorzystaniem przycisków i komend.
+- Implementation of an interactive interface in Discord using buttons and commands.
 
-- Zapewnienie wygodnej nawigacji po listach anime z paginacją.
+- Providing easy navigation through anime lists with pagination.
 
-### 3. Oczekiwane rezultaty
-- Użytkownicy będą mogli szybko znajdować informacje o anime, w tym oceny, opisy, gatunki i studia.
+### 3. Expected Results
+- Users will be able to quickly find information about anime, including ratings, descriptions, genres, and studios.
 
-- Bot pomoże użytkownikom przypomnieć sobie tytuł anime na podstawie opisu.
+- The bot will help users remember the title of an anime based on its description.
 
-- Użytkownicy otrzymają spersonalizowane rekomendacje, co ułatwi wybór nowego anime do obejrzenia.
+- Users will receive personalized recommendations, making it easier to choose a new anime to watch.
 
-- Bot będzie wspierał interaktywne interakcje, co zwiększy wygodę użytkowania.
+- The bot will support interactive interactions, enhancing the user experience.
 
-## Główne funkcje
-- Otrzymywanie listy popularnych anime.
-Bot może wyświetlić top-10 popularnych anime na podstawie rankingu MyAnimeList.
+## Main Features
+- Receiving a list of popular anime
+The bot can display the top 10 most popular anime based on the MyAnimeList ranking.
 
-- Otrzymywanie listy aktualnie emitowanych anime.
-Bot pokazuje top-10 anime, które są obecnie emitowane.
+- Receiving a list of currently airing anime
+The bot shows the top 10 anime that are currently airing.
 
-- Wyszukiwanie anime według sezonu.
-Bot może wyświetlić listę anime, które zostały wydane w określonym sezonie (zima, wiosna, lato, jesień) i roku.
+- Searching anime by season
+The bot can display a list of anime released in a specific season (winter, spring, summer, fall) and year.
 
-- Wyszukiwanie anime na podstawie opisu.
-Jeśli użytkownik zapomniał tytułu anime, ale pamięta jego opis, bot może pomóc znaleźć tytuł za pomocą Mistral AI.
+- Searching anime based on description
+If a user forgets the anime title but remembers the description, the bot can help find the title using Mistral AI.
 
-- Rekomendacje anime.
-Bot może zarekomendować anime na podstawie preferencji użytkownika (np. gatunek, tematyka, styl).
+- Anime recommendations
+The bot can recommend anime based on the user's preferences (e.g., genre, theme, style).
 
-- Dodatkowe informacje o anime.
-Dla każdego anime z listy można uzyskać szczegółowe informacje: ocenę, liczbę odcinków, gatunki, studia, daty wydania i opis.
+- Additional information about anime
+For each anime in the list, you can get detailed information: rating, number of episodes, genres, studios, release dates, and description.
 
-## Funkcjonalności
+## Functionalities
 
 ### /start
-- **Opis**: Wyświetla wiadomość powitalną.
-- **Funkcjonalność**: Po wpisaniu komendy bot odpowiada wiadomością powitalną, informując użytkownika o dostępnych komendach i funkcjonalności bota.
+Description: Displays a welcome message.
+
+Functionality: Upon entering the command, the bot responds with a welcome message informing the user about the available commands and bot features.
 
 ### /help
-- **Opis**: Wyświetla listę dostępnych komend.
-- **Funkcjonalność**: Bot wysyła wiadomość z listą dostępnych komend i ich opisami, pomagając użytkownikowi w nawigacji po funkcjach.
+Description: Displays a list of available commands.
+
+Functionality: The bot sends a message with a list of commands and their descriptions to help the user navigate the features.
 
 ### /top-anime
-- **Opis**: Wyświetla 10 najpopularniejszych anime.
-- **Funkcjonalność**: Pobiera dane z API MyAnimeList i prezentuje top-10 anime w rankingu popularności. Użytkownik może kliknąć przycisk, aby zobaczyć więcej szczegółów.
+Description: Displays the top 10 most popular anime.
+
+Functionality: Retrieves data from the MyAnimeList API and presents the top 10 anime in the popularity ranking. The user can click a button to view more details.
 
 ### /airing-anime
-- **Opis**: Wyświetla 10 anime, które są obecnie emitowane.
-- **Funkcjonalność**: Pokazuje top-10 anime, które są w trakcie emisji, z danymi o premierach, ocenach i linkiem do MyAnimeList.
+Description: Displays 10 anime that are currently airing.
+
+Functionality: Shows the top 10 anime currently airing, with data about premieres, ratings, and a link to MyAnimeList.
 
 ### /seasonal-anime
-- **Opis**: Wyświetla anime wydane w danym sezonie (zima, wiosna, lato, jesień) i roku.
-- **Funkcjonalność**: Użytkownik wybiera rok oraz sezon, a bot wyświetla anime z danego okresu.
+Description: Displays anime released in a given season (winter, spring, summer, fall) and year.
+
+Functionality: The user selects the year and season, and the bot displays anime from that period.
 
 ### /find-anime
-- **Opis**: Znajduje anime na podstawie opisu.
-- **Funkcjonalność**: Jeśli użytkownik nie pamięta tytułu anime, ale zna jego opis, bot pomoże w jego znalezieniu.
+Description: Finds anime based on a description.
+
+Functionality: If the user doesn’t remember the title but knows the description, the bot helps find it.
 
 ### /recommend
-- **Opis**: Rekomendacje anime na podstawie preferencji użytkownika.
-- **Funkcjonalność**: Użytkownik podaje preferencje dotyczące gatunku, tematyki lub stylu anime, a bot generuje rekomendacje.
+Description: Anime recommendations based on user preferences.
+
+Functionality: The user provides preferences regarding genre, theme, or style, and the bot generates recommendations.
 
 ### /more
-- **Opis**: Wyświetla kolejne 10 anime z listy.
-- **Funkcjonalność**: Umożliwia przejście do kolejnej strony z listą anime.
+Description: Displays the next 10 anime from the list.
 
-## Obsługa błędów
+Functionality: Allows navigating to the next page of the anime list.
 
-Bot posiada mechanizmy obsługi błędów:
-- **TimeoutError**: Jeśli API nie odpowiada w ciągu określonego czasu, użytkownik otrzymuje komunikat o błędzie.
-- **ValueError**: W przypadku nieprawidłowego opisu lub preferencji bot informuje użytkownika o konieczności poprawienia danych.
+## Error Handling
+The bot has error handling mechanisms:
 
-## Technologie
+- TimeoutError: If the API does not respond within a certain time, the user receives an error message.
 
-- **Python**: Język programowania do tworzenia bota.
-- **discord.py**: Biblioteka do interakcji z Discord API.
-- **python-dotenv**: Do zarządzania zmiennymi środowiskowymi, takimi jak token bota.
-- **aiohttp**: Biblioteka do obsługi asynchronicznych żądań HTTP.
-- **requests**: Biblioteka do wykonywania zapytań HTTP.
-- **mistralai**: Sztuczna inteligencja do rozpoznawania anime na podstawie opisu.
+- ValueError: In case of an invalid description or preferences, the bot informs the user that the input needs to be corrected.
 
-## Instalacja
+## Technologies
+- Python: Programming language used to build the bot.
 
-1. Zainstaluj wymagane biblioteki:
+- discord.py: Library for interacting with the Discord API.
+
+- python-dotenv: For managing environment variables such as the bot token.
+
+- aiohttp: Library for handling asynchronous HTTP requests.
+
+- requests: Library for making HTTP requests.
+
+- mistralai: AI for recognizing anime based on description.
+
+## Installation
+Install the required libraries:
 
 ```bash
 pip install -r requirements.txt
